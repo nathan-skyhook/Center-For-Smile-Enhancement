@@ -1,0 +1,392 @@
+---
+const services = [
+  { label: 'General & Family Dentistry',    href: '/services/general-family-dentistry/' },
+  { label: 'Cosmetic Dentistry',            href: '/services/cosmetic-dentistry/' },
+  { label: 'Orthodontics',                  href: '/services/orthodontics/' },
+  { label: 'Implant Dentistry',             href: '/services/implant-dentistry/' },
+  { label: 'Masterpiece Aesthetics',        href: '/services/masterpiece-aesthetics/' },
+  { label: 'Masterpiece TMJ & Facial Pain', href: '/services/masterpiece-tmj-facial-pain/' },
+  { label: 'Emergency Care',               href: '/services/emergency-care/' },
+  { label: 'Teledentistry',               href: '/services/teledentistry/' },
+  { label: 'Advanced Technology',          href: '/services/advanced-technology/' },
+  { label: 'Galleri® Oral Cancer Detection', href: '/services/galleri-oral-cancer-detection/' },
+];
+
+const navLinks = [
+  { label: 'About',       href: '/about/' },
+  { label: 'Our Doctors', href: '/about/our-doctors/' },
+  { label: 'Patients',    href: '/patients/' },
+  { label: 'Blog',        href: '/blog/' },
+  { label: 'Contact',     href: '/contact/' },
+];
+
+const currentPath = Astro.url.pathname;
+const isServiceActive = currentPath.startsWith('/services/');
+---
+
+<header>
+  <!-- Announcement banner -->
+  <div style="background-color: var(--color-primary); color: #ffffff; font-family: var(--font-body); font-size: 0.8125rem; text-align: center; padding: 0.5rem 1rem; letter-spacing: 0.02em;">
+    Now offering Galleri® early cancer detection — first dental practice in Minnesota.&nbsp;
+    <a href="/services/galleri-oral-cancer-detection/" style="text-decoration: underline; color: var(--color-brand-light);">Learn more</a>
+  </div>
+
+  <!-- Navigation -->
+  <nav
+    style="position: sticky; top: 0; z-index: 50; background-color: #ffffff; border-bottom: 1px solid var(--color-border);"
+    aria-label="Main navigation"
+  >
+    <div class="site-container">
+      <div style="display: flex; align-items: center; justify-content: space-between; height: 5rem;">
+
+        <!-- Logo -->
+        <a href="/" aria-label="Center for Smile Enhancement — Home" style="flex-shrink: 0;">
+          <img
+            src="/images/logo-banner.jpg"
+            alt="Center for Smile Enhancement"
+            width="220"
+            height="52"
+            style="height: 4.5rem; width: auto; object-fit: contain;"
+            loading="eager"
+          />
+        </a>
+
+        <!-- Desktop nav -->
+        <ul role="list" class="desktop-nav" style="display: none; align-items: center; gap: 2rem; list-style: none; margin: 0; padding: 0;">
+
+          <!-- Services dropdown -->
+          <li class="nav-dropdown">
+            <button
+              class={`nav-link dropdown-trigger${isServiceActive ? ' active' : ''}`}
+              aria-haspopup="true"
+              aria-expanded="false"
+              id="services-btn"
+            >
+              Services
+              <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            <div class="dropdown-panel" id="services-panel" role="region" aria-labelledby="services-btn">
+              <ul role="list" class="dropdown-grid">
+                {services.map((s) => (
+                  <li>
+                    <a
+                      href={s.href}
+                      class={`dropdown-link${currentPath === s.href ? ' dropdown-link--active' : ''}`}
+                    >
+                      {s.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <div class="dropdown-footer">
+                <a href="/services/" class="dropdown-all-link">
+                  View All Services →
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <!-- Flat nav links -->
+          {navLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class={`nav-link${currentPath.startsWith(link.href) ? ' active' : ''}`}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <!-- Right side: CTA + mobile toggle -->
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <a href="/schedule/" class="btn btn-primary desktop-cta" style="display: none;">
+            Schedule Appointment
+          </a>
+
+          <!-- Mobile hamburger -->
+          <button
+            id="mobile-menu-btn"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            class="mobile-toggle"
+            style="display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 0.5rem;"
+          >
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile menu panel -->
+    <div
+      id="mobile-menu"
+      style="display: none; border-top: 1px solid var(--color-border); background-color: #ffffff;"
+      aria-hidden="true"
+    >
+      <div class="site-container" style="padding-top: 1rem; padding-bottom: 1.5rem;">
+        <ul role="list" style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column;">
+
+          <!-- Mobile: Services accordion -->
+          <li>
+            <button
+              id="mobile-services-btn"
+              class="mobile-nav-row mobile-accordion-btn"
+              aria-expanded="false"
+            >
+              Services
+              <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul id="mobile-services-list" class="mobile-service-list" style="display: none;" role="list">
+              {services.map((s) => (
+                <li>
+                  <a href={s.href} class="mobile-service-link">{s.label}</a>
+                </li>
+              ))}
+              <li>
+                <a href="/services/" class="mobile-service-link" style="font-weight: 500; color: var(--color-primary);">View All Services</a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Mobile: flat links -->
+          {navLinks.map((link) => (
+            <li>
+              <a href={link.href} class="mobile-nav-row mobile-nav-link">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div style="margin-top: 1.5rem;">
+          <a href="/schedule/" class="btn btn-primary" style="width: 100%; text-align: center;">
+            Schedule Appointment
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<style>
+  /* ── Show/hide breakpoint ───────────────────────────── */
+  @media (min-width: 1024px) {
+    .desktop-nav  { display: flex !important; }
+    .desktop-cta  { display: inline-flex !important; }
+    .mobile-toggle { display: none !important; }
+  }
+
+  /* ── Shared nav-link style ──────────────────────────── */
+  .nav-link {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--color-text-base);
+    letter-spacing: 0.01em;
+    transition: color 0.2s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--color-primary);
+  }
+
+  /* ── Services dropdown ──────────────────────────────── */
+  .nav-dropdown {
+    position: relative;
+  }
+
+  .dropdown-panel {
+    display: none;
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+    min-width: 560px;
+    padding: 1.25rem 1.5rem 1rem;
+    z-index: 100;
+  }
+
+  /* Small arrow pointing up */
+  .dropdown-panel::before {
+    content: '';
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: #ffffff;
+    border-left: 1px solid var(--color-border);
+    border-top: 1px solid var(--color-border);
+    rotate: 45deg;
+  }
+
+  .nav-dropdown:hover .dropdown-panel,
+  .nav-dropdown:focus-within .dropdown-panel {
+    display: block;
+  }
+
+  .nav-dropdown:hover .dropdown-trigger,
+  .nav-dropdown:focus-within .dropdown-trigger {
+    color: var(--color-primary);
+  }
+
+  .nav-dropdown:hover .chevron,
+  .nav-dropdown:focus-within .chevron {
+    transform: rotate(180deg);
+  }
+
+  .chevron {
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .dropdown-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.125rem 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .dropdown-link {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: var(--color-text-base);
+    padding: 0.45rem 0;
+    transition: color 0.15s;
+    white-space: nowrap;
+  }
+  .dropdown-link:hover,
+  .dropdown-link--active {
+    color: var(--color-primary);
+  }
+
+  .dropdown-footer {
+    margin-top: 0.875rem;
+    padding-top: 0.875rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .dropdown-all-link {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    transition: opacity 0.15s;
+  }
+  .dropdown-all-link:hover { opacity: 0.75; }
+
+  /* ── Mobile nav ─────────────────────────────────────── */
+  .hamburger-bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: all 0.2s;
+  }
+
+  .mobile-nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-text-base);
+    padding: 0.875rem 0;
+    border-bottom: 1px solid var(--color-border);
+    background: none;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    cursor: pointer;
+    text-align: left;
+  }
+  .mobile-nav-link { text-decoration: none; }
+
+  .mobile-accordion-btn[aria-expanded="true"] .chevron {
+    transform: rotate(180deg);
+  }
+
+  .mobile-service-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .mobile-service-link {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--color-text-base);
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .mobile-service-link:last-child { border-bottom: none; }
+  .mobile-service-link:hover { color: var(--color-primary); }
+</style>
+
+<script>
+  // ── Mobile menu toggle ─────────────────────────────────
+  const mobileBtn  = document.getElementById('mobile-menu-btn') as HTMLButtonElement | null;
+  const mobileMenu = document.getElementById('mobile-menu') as HTMLElement | null;
+
+  function isMobileOpen(): boolean {
+    return mobileMenu?.style.display === 'block';
+  }
+  function openMobile(): void {
+    if (!mobileMenu || !mobileBtn) return;
+    mobileMenu.style.display = 'block';
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    mobileBtn.setAttribute('aria-expanded', 'true');
+    (mobileMenu.querySelector<HTMLElement>('a, button'))?.focus();
+  }
+  function closeMobile(): void {
+    if (!mobileMenu || !mobileBtn) return;
+    mobileMenu.style.display = 'none';
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    mobileBtn.setAttribute('aria-expanded', 'false');
+    mobileBtn.focus();
+  }
+
+  mobileBtn?.addEventListener('click', () => isMobileOpen() ? closeMobile() : openMobile());
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && isMobileOpen()) closeMobile(); });
+
+  // ── Mobile services accordion ──────────────────────────
+  const servicesBtn  = document.getElementById('mobile-services-btn') as HTMLButtonElement | null;
+  const servicesList = document.getElementById('mobile-services-list') as HTMLElement | null;
+
+  servicesBtn?.addEventListener('click', () => {
+    const open = servicesList?.style.display === 'block';
+    if (servicesList) servicesList.style.display = open ? 'none' : 'block';
+    servicesBtn.setAttribute('aria-expanded', String(!open));
+  });
+</script>

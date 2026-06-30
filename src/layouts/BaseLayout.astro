@@ -12,17 +12,29 @@ interface Props {
 
 const {
   title,
-  description = 'Site Factory generated website',
+  description = 'Boutique dental care in Minnetonka, MN. Dr. Michael Sudit, DDS — 35+ years of clinical excellence and Disney-inspired patient service.',
   image,
   noindex = false,
 } = Astro.props;
 
-// Site-wide structured data (customize in intake/INTAKE.md)
 const organizationData = {
-  name: "[Business Name]",
-  url: Astro.site?.href,
-  logo: new URL('/images/logo.png', Astro.site).href,
-  // Add more fields from INTAKE.md: address, phone, email, social profiles
+  name: "Center for Smile Enhancement",
+  alternateName: "Dr. Michael Sudit, DDS",
+  url: "https://www.drsudit.com",
+  logo: new URL('/images/logo-banner.jpg', Astro.site).href,
+  telephone: "+19525939310",
+  email: "TheCenterforSmileEnhancement@PDPSmiles.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "10500 Wayzata Blvd.",
+    addressLocality: "Minnetonka",
+    addressRegion: "MN",
+    postalCode: "55305",
+    addressCountry: "US",
+  },
+  openingHours: ["Mo-Th 08:00-17:00", "Fr 08:00-12:00"],
+  priceRange: "$$$$",
+  medicalSpecialty: "Dentistry",
 };
 ---
 
@@ -32,27 +44,20 @@ const organizationData = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Preconnect to external origins (fonts, analytics) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Google Fonts with font-display: swap for performance -->
-    <!-- Update this URL based on intake/branding/fonts.md -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Complete Favicon Set -->
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
 
-    <!-- Theme color for browser UI -->
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#1e3460" />
 
-    <!-- SEO Meta Tags (includes Open Graph and Twitter Cards) -->
     <SEOHead
       title={title}
       description={description}
@@ -60,10 +65,10 @@ const organizationData = {
       noindex={noindex}
     />
 
-    <!-- Organization Structured Data (site-wide) -->
-    <StructuredData type="Organization" data={organizationData} />
+    <StructuredData type="LocalBusiness" data={organizationData} />
   </head>
-  <body class="font-body text-neutral-900 bg-neutral-50 antialiased">
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <slot />
   </body>
 </html>

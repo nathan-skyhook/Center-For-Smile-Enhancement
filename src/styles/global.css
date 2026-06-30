@@ -1,28 +1,204 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand colors - populated from intake/branding/colors.md */
-  --color-primary: oklch(0.5 0.2 250);
-  --color-secondary: oklch(0.7 0.15 200);
-  --color-accent: oklch(0.6 0.25 30);
+  /* ── Brand Colors ─────────────────────────────────── */
+  --color-primary:       #1e3460;
+  --color-primary-hover: #162850;
+  --color-brand-light:   #c5cde3;
 
-  /* Neutral scale */
-  --color-neutral-50: oklch(0.98 0 0);
-  --color-neutral-100: oklch(0.96 0 0);
-  --color-neutral-200: oklch(0.92 0 0);
-  --color-neutral-300: oklch(0.87 0 0);
-  --color-neutral-400: oklch(0.7 0 0);
-  --color-neutral-500: oklch(0.55 0 0);
-  --color-neutral-600: oklch(0.45 0 0);
-  --color-neutral-700: oklch(0.35 0 0);
-  --color-neutral-800: oklch(0.25 0 0);
-  --color-neutral-900: oklch(0.15 0 0);
+  /* ── Text ─────────────────────────────────────────── */
+  --color-text-base:  #1a1f2e;
+  --color-text-muted: #6b7280;
 
-  /* Typography - populated from intake/branding/fonts.md */
-  --font-display: "Inter", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
+  /* ── Backgrounds / Surfaces ───────────────────────── */
+  --color-surface: #f8f9fb;
+  --color-border:  #e4e8f0;
 
-  /* Spacing scale */
+  /* ── Semantic ─────────────────────────────────────── */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error:   #ef4444;
+  --color-info:    #3b82f6;
+
+  /* ── Typography ───────────────────────────────────── */
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body:    "Lato", system-ui, sans-serif;
+
+  /* ── Spacing ──────────────────────────────────────── */
   --spacing-section: 5rem;
   --spacing-content: 2rem;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+    color: var(--color-text-base);
+    background-color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    color: var(--color-primary);
+    line-height: 1.2;
+  }
+
+  h5, h6 {
+    font-family: var(--font-body);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+@layer base {
+  /* Accessible focus ring — WCAG 2.2 SC 2.4.11 */
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+  /* Visually hidden utility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  /* Skip-to-content link */
+  .skip-link {
+    position: absolute;
+    top: -999px;
+    left: 0;
+    z-index: 200;
+    padding: 0.625rem 1.25rem;
+    background-color: var(--color-primary);
+    color: #ffffff;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: top 0s;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
+}
+
+@layer components {
+  /* ── Buttons ───────────────────────────────────────── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8125rem 1.875rem;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    border-color: var(--color-primary);
+  }
+  .btn-primary:hover {
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+  }
+
+  .btn-outline {
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+  .btn-outline:hover {
+    background-color: var(--color-primary);
+    color: #ffffff;
+  }
+
+  .btn-outline-white {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: #ffffff;
+  }
+  .btn-outline-white:hover {
+    background-color: #ffffff;
+    color: var(--color-primary);
+  }
+
+  /* ── Layout ────────────────────────────────────────── */
+  .site-container {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  @media (min-width: 640px) {
+    .site-container { padding-left: 2rem; padding-right: 2rem; }
+  }
+  @media (min-width: 1024px) {
+    .site-container { padding-left: 2.5rem; padding-right: 2.5rem; }
+  }
+
+  .section-py {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  @media (min-width: 768px) {
+    .section-py { padding-top: 5rem; padding-bottom: 5rem; }
+  }
+  @media (min-width: 1024px) {
+    .section-py { padding-top: 6rem; padding-bottom: 6rem; }
+  }
+
+  /* ── Typography helpers ────────────────────────────── */
+  .section-eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    display: block;
+    margin-bottom: 0.625rem;
+  }
+
+  .section-heading {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.2;
+  }
+
+  /* ── Cards ─────────────────────────────────────────── */
+  .card {
+    background-color: #ffffff;
+    border: 1px solid var(--color-border);
+    padding: 1.75rem;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .card:hover {
+    box-shadow: 0 4px 24px rgba(30, 52, 96, 0.08);
+    transform: translateY(-2px);
+  }
 }

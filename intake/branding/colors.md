@@ -1,41 +1,39 @@
-# Brand Colors
+# Brand Colors — Center for Smile Enhancement
 
-Define your color palette here. Claude will use these to customize the Tailwind theme.
-
-## Primary Colors
-
-**Primary:** #4f46e5 (Indigo)
-- Used for: Main CTA buttons, links, key UI elements
-- Hover state: Slightly darker
-
-**Secondary:** #0891b2 (Cyan)
-- Used for: Secondary actions, accents
-
-**Accent:** #f59e0b (Amber)
-- Used for: Highlights, badges, special callouts
-
-## Neutral Colors
-
-**Text:** #1f2937 (Gray 800)
-**Muted Text:** #6b7280 (Gray 500)
-**Background:** #ffffff (White)
-**Surface:** #f9fafb (Gray 50)
-**Border:** #e5e7eb (Gray 200)
-
-## Semantic Colors
-
-**Success:** #10b981 (Emerald)
-**Warning:** #f59e0b (Amber)
-**Error:** #ef4444 (Red)
-**Info:** #3b82f6 (Blue)
+## Brand Direction
+White space, open contemporary feel. Less reliance on blue/black. High-end, clean, editorial.
+Think Nordstrom, Ritz-Carlton — premium without being cold.
 
 ---
 
-## Color Format Notes
+## Primary Colors
 
-For Tailwind v4 with oklch, colors will be converted automatically.
-You can also provide oklch values directly:
+**Primary (Dark Blue):** `#1e3460` *(PLACEHOLDER — confirm via logo color match)*
+- Used for: Primary CTA buttons, headings, nav, key UI elements
+- Hover state: Slightly lighter / slightly more saturated
+- Note: Exact value TBD pending logo file color match (Claudia)
 
-```
-Primary: oklch(0.5 0.2 265)
-```
+**Secondary (Light Blue):** `#c5cde3`
+- HSL: `hsl(224, 35%, 83%)`
+- RGB: `rgb(197, 205, 227)`
+- Used for: Accents, subtle backgrounds, section dividers, tag/badge elements
+- This is a confirmed brand color from the logo
+
+---
+
+## Neutral Colors
+
+**Text:** `#1a1f2e` (near-black with blue undertone — stays on-brand)
+**Muted Text:** `#6b7280`
+**Background:** `#ffffff` (pure white — editorial open feel)
+**Surface:** `#f8f9fb` (barely-there cool white — section alternation)
+**Border:** `#e4e8f0` (light, slightly blue-tinted border)
+
+---
+
+## Semantic Colors
+
+**Success:** `#10b981`
+**Warning:** `#f59e0b`
+**Error:** `#ef4444`
+**Info:** `#3b82f6`

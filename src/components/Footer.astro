@@ -1,0 +1,171 @@
+---
+const services = [
+  { label: 'General & Family Dentistry',        href: '/services/general-family-dentistry/' },
+  { label: 'Cosmetic Dentistry',                href: '/services/cosmetic-dentistry/' },
+  { label: 'Orthodontics',                      href: '/services/orthodontics/' },
+  { label: 'Implant Dentistry',                 href: '/services/implant-dentistry/' },
+  { label: 'Masterpiece Aesthetics',            href: '/services/masterpiece-aesthetics/' },
+  { label: 'TMJ & Facial Pain',                 href: '/services/tmj-facial-pain/' },
+  { label: 'Emergency Care',                    href: '/services/emergency-care/' },
+  { label: 'Teledentistry',                     href: '/services/teledentistry/' },
+  { label: 'Advanced Technology',               href: '/services/advanced-technology/' },
+  { label: 'Galleri® Cancer Detection',         href: '/services/galleri-oral-cancer-detection/' },
+];
+
+const patientLinks = [
+  { label: 'New Patients',        href: '/patients/new-patients/' },
+  { label: 'Patient Forms',       href: '/patients/patient-forms/' },
+  { label: 'Insurance & Payment', href: '/patients/insurance-payment/' },
+  { label: 'FAQ',                 href: '/patients/faq/' },
+  { label: 'Reviews',             href: '/patients/reviews/' },
+  { label: 'Promotions',          href: '/patients/promotions/' },
+  { label: 'Aftercare Instructions', href: '/aftercare/cleanings-checkups/' },
+];
+
+const legalLinks = [
+  { label: 'Privacy Policy', href: '/privacy/' },
+  { label: 'HIPAA Notice',   href: '/hipaa/' },
+  { label: 'Accessibility',  href: '/accessibility/' },
+  { label: 'Terms of Use',   href: '/terms/' },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer style="background-color: var(--color-primary); color: #ffffff; font-family: var(--font-body);">
+  <!-- Main footer grid -->
+  <div class="site-container" style="padding-top: 4rem; padding-bottom: 4rem;">
+    <div class="footer-grid">
+
+      <!-- Brand column -->
+      <div class="footer-brand">
+        <a href="/" aria-label="Center for Smile Enhancement — Home">
+          <img
+            src="/images/logo-banner.jpg"
+            alt="Center for Smile Enhancement"
+            width="80"
+            height="80"
+            style="height: 8rem; width: 8rem; object-fit: cover; border-radius: 50%; display: block; margin-bottom: 1.25rem;"
+            loading="lazy"
+          />
+        </a>
+        <p style="font-size: 0.9375rem; line-height: 1.7; color: rgba(255,255,255,0.75); max-width: 22rem; margin-bottom: 1.5rem;">
+          Health and dental excellence is the baseline. Service is the differentiator.
+        </p>
+        <address style="font-style: normal; font-size: 0.875rem; color: rgba(255,255,255,0.7); line-height: 1.8;">
+          10500 Wayzata Blvd.<br />
+          Minnetonka, MN 55305<br />
+          <a href="tel:9525939310" style="color: var(--color-brand-light); text-decoration: none;">952-593-9310</a>
+        </address>
+        <p style="margin-top: 0.75rem; font-size: 0.8125rem; color: rgba(255,255,255,0.55);">
+          Mon–Thu 8am–5pm &nbsp;·&nbsp; Fri 8am–12pm
+        </p>
+      </div>
+
+      <!-- Services column -->
+      <div class="footer-col">
+        <h3 style="font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-brand-light); margin-bottom: 1.25rem;">
+          Services
+        </h3>
+        <ul role="list" style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.625rem;">
+          {services.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                style="font-size: 0.875rem; color: rgba(255,255,255,0.7); transition: color 0.2s;"
+                class="footer-link"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Patients column -->
+      <div class="footer-col">
+        <h3 style="font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-brand-light); margin-bottom: 1.25rem;">
+          Patients
+        </h3>
+        <ul role="list" style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.625rem;">
+          {patientLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                style="font-size: 0.875rem; color: rgba(255,255,255,0.7); transition: color 0.2s;"
+                class="footer-link"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Practice column -->
+      <div class="footer-col">
+        <h3 style="font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-brand-light); margin-bottom: 1.25rem;">
+          Practice
+        </h3>
+        <ul role="list" style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.625rem;">
+          <li><a href="/about/" style="font-size: 0.875rem; color: rgba(255,255,255,0.7);" class="footer-link">About Us</a></li>
+          <li><a href="/about/our-doctors/" style="font-size: 0.875rem; color: rgba(255,255,255,0.7);" class="footer-link">Our Doctors</a></li>
+          <li><a href="/blog/" style="font-size: 0.875rem; color: rgba(255,255,255,0.7);" class="footer-link">Blog</a></li>
+          <li><a href="/contact/" style="font-size: 0.875rem; color: rgba(255,255,255,0.7);" class="footer-link">Contact</a></li>
+          <li><a href="/schedule/" style="font-size: 0.875rem; color: rgba(255,255,255,0.7);" class="footer-link">Schedule Appointment</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div style="border-top: 1px solid rgba(255,255,255,0.1);">
+    <div class="site-container" style="padding-top: 1.25rem; padding-bottom: 1.25rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem;">
+      <p style="font-size: 0.8125rem; color: rgba(255,255,255,0.45);">
+        &copy; {year} Center for Smile Enhancement. All rights reserved.
+      </p>
+      <ul role="list" style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 1.25rem;">
+        {legalLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              style="font-size: 0.8125rem; color: rgba(255,255,255,0.45); transition: color 0.2s;"
+              class="footer-link"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  @media (min-width: 640px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .footer-brand {
+      grid-column: span 2;
+    }
+  }
+  @media (min-width: 1024px) {
+    .footer-grid {
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    }
+    .footer-brand {
+      grid-column: span 1;
+    }
+  }
+
+  .footer-link:hover {
+    color: #ffffff !important;
+  }
+</style>

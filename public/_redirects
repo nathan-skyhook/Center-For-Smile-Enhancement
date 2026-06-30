@@ -1,0 +1,43 @@
+# Center for Smile Enhancement — Cloudflare Redirect Rules
+# Old drsudit.com URL structure → new site URL structure
+# Generated during intake: 2026-06-30
+
+# ── Main pages ────────────────────────────────────────────────────────────────
+/about-us                                          /about/                                        301
+/ourdoctors                                        /about/our-doctors/                            301
+/contact-us                                        /contact/                                      301
+
+# ── Services (flat → nested) ──────────────────────────────────────────────────
+/general-family-dentistry                          /services/general-family-dentistry/            301
+/cosmetic-dentistry                                /services/cosmetic-dentistry/                  301
+/orthodontics                                      /services/orthodontics/                        301
+/implant-dentistry                                 /services/implant-dentistry/                   301
+/masterpiece-aesthetics                            /services/masterpiece-aesthetics/              301
+/masterpiece-tmj-facial-pain-and-sleep-management  /services/tmj-facial-pain/                     301
+/teledentistry                                     /services/teledentistry/                       301
+/emergency-care                                    /services/emergency-care/                      301
+/advanced-technology                               /services/advanced-technology/                 301
+
+# ── Patient resources (flat → /patients/) ────────────────────────────────────
+/faq                                               /patients/faq/                                 301
+/reviews                                           /patients/reviews/                             301
+/promotions-1                                      /patients/promotions/                          301
+/payment-options                                   /patients/insurance-payment/                   301
+
+# ── After-care instructions (flat → /aftercare/) ─────────────────────────────
+/after-care-instructions                           /                                              301
+/botox-injections                                  /aftercare/botox-injections/                   301
+/bruise-management                                 /aftercare/bruise-management/                  301
+/cleanings-and-checkups                            /aftercare/cleanings-checkups/                 301
+/crowns-and-bridges                                /aftercare/crowns-bridges/                     301
+/dermal-filler-injections                          /aftercare/dermal-filler-injections/           301
+/root-canals                                       /aftercare/root-canals/                        301
+/routine-fillings                                  /aftercare/routine-fillings/                   301
+/veneers                                           /aftercare/veneers/                            301
+
+# ── Removed pages ────────────────────────────────────────────────────────────
+/our-team                                          /about/                                        301
+/our-aesthetics-professional                       /services/masterpiece-aesthetics/              301
+/expertise                                         /about/                                        301
+/patient-login                                     /                                              301
+/masterpiece-pain-management                       /                                              301
