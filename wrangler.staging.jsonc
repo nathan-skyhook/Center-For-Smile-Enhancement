@@ -1,13 +1,11 @@
 {
-  "name": "center-for-smile-enhancement",
+  "name": "center-for-smile-enhancement-staging",
   "account_id": "6ba8d559dd652da1003752c4674dfa6c",
   "compatibility_date": "2026-02-01",
   "assets": {
     "directory": "./dist"
   },
-  "env": {
-    "staging": {
-      "name": "center-for-smile-enhancement-staging"
-    }
-  }
+  "routes": [
+    { "pattern": "cse.spark0.io", "custom_domain": true }
+  ]
 }
